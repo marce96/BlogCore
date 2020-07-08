@@ -1,0 +1,13 @@
+microsoft.aspnet.core.mvc.razor.runtimecompilation - BlogCore
+microsoft.aspnetcore.mvc - AccesoDatos, Modelo
+microsoft.aspnetcore.mvc.newtonsoftjson - BlogCore
+microsoft.entityframeworkcore - AccesoDatos
+microsoft.extensions.identity.stores - AccesoDatos, Modelo
+microsoft.aspnetcore.identity.entityframework - AccesoDatos, Modelo
+microsoft.entityframeworkcore.sqlserver - AccesoDatos
+
+https://bootswatch.com/lux/
+
+https://codeseven.github.io/toastr/demo.html
+http://sweetalert.js.org/guides/
+https://fontawesome.com/6?next=%2F
