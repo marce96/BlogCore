@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogCore.AccesoDatos.Data;
 using BlogCore.AccesoDatos.Data.Repository;
 using BlogCore.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BlogCore.Areas.Admin.Controllers
@@ -15,10 +17,12 @@ namespace BlogCore.Areas.Admin.Controllers
     public class CategoriasController : Controller
     {
         private readonly IContenedorTrabajo _contenedorTrabajo;
+        private readonly ApplicationDbContext _context;
 
-        public CategoriasController(IContenedorTrabajo contenedorTrabajo)
+        public CategoriasController(IContenedorTrabajo contenedorTrabajo, ApplicationDbContext context)
         {
             _contenedorTrabajo = contenedorTrabajo;
+            _context = context;
         }
 
         [HttpGet]
@@ -76,7 +80,8 @@ namespace BlogCore.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _contenedorTrabajo.Categoria.GetAll()});
+            var categorias = _context.Categoria.FromSqlRaw<Categoria>("spGetCategorias").ToList();
+            return Json(new { data = categorias});
         }
 
         [HttpGet]
